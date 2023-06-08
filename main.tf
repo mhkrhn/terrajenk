@@ -16,6 +16,11 @@ variable "environment" {
    description = "Environment"
    default = "Staging"
 }
+variable "instance_size" {
+   type = string
+   description = "Azure instance size"
+   default = "Standard_F2"
+}
 resource "azurerm_resource_group" "webserver" {
    name = "mktestgroup"
    location = var.location
