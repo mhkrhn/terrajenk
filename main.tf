@@ -96,17 +96,6 @@ resource "azurerm_network_interface" "webserver" {
 
    depends_on = [azurerm_resource_group.webserver]
 }
-
-resource "azurerm_linux_virtual_machine" "nginx" {
-   size = var.instance_size
-   name = "nginx-webserver"
-   resource_group_name = azurerm_resource_group.webserver.name
-   location = azurerm_resource_group.webserver.location
-   custom_data = base64encode(file("init-script.sh"))
-   network_interface_ids = [
-       azurerm_network_interface.webserver.id,
-   ]
-
    source_image_reference {
        publisher = "Canonical"
        offer = "UbuntuServer"
