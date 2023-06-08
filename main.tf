@@ -11,6 +11,11 @@ variable "location" {
    description = "Region"
    default = "France Central"
 }
+variable "environment" {
+   type = string
+   description = "Environment"
+   default = "Staging"
+}
 resource "azurerm_resource_group" "webserver" {
    name = "mktestgroup"
    location = var.location
